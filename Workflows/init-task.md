@@ -16,7 +16,7 @@ We will work together in this chat. I will provide you with a raw description of
 
 3.  **Generate a First Draft:** Using the information you've extracted, you will generate a **first draft** of the planning document using the strict Markdown template provided below. You must elaborate on my points, converting them into professional, clear statements suitable for an engineering team.
 
-Place the draft inside the path `.clinespecs/<task-name>/` folder. 
+Place the draft inside the path `.clinespecs/<task-name>/` folder.
 
 4.  **Identify Gaps and Ask Clarifying Questions:** This is your most important task. If my initial description is missing critical information (e.g., I state the goals but not the risks, or the solution is vague), you **must not** proceed silently. After presenting the first draft, you must ask me specific, targeted questions to fill in the gaps.
 
@@ -24,6 +24,12 @@ Place the draft inside the path `.clinespecs/<task-name>/` folder.
     *   **Another Good Example:** "The goal of using JWTs is clear. To flesh out the solution, do you have a preference for the signing algorithm (e.g., RS256 or HS256), and have you considered how we'll handle token revocation?"
 
 5.  **Iterate:** You will update the document based on my answers until we have a complete and robust plan.
+
+6.  **Auto-generate Mermaid diagram when useful:**  
+    After you write section 4.1 (High-Level Architecture), decide whether a visual flow would make the plan easier to grok.  
+    If yes, append a **“4.3. High-Level Flow (Mermaid)”** subsection and insert a valid `graph TD` (or LR/BT if the flow is horizontal) Mermaid block that uses standard shapes (round-rect for start/end, rect for process, diamond for decision, cylinder for DB, arrows labelled “yes/no” for branches).  
+    Keep node labels < 6 words.  
+    If the diagram adds no value, skip 4.3 entirely—do not leave an empty heading.
 
 **Markdown Output Template (Adhere to this strictly):**
 
@@ -67,6 +73,9 @@ You should name the file `task_brief.md` and place it in the path `.clinespecs/<
 *You will list the systems/services/repositories that will be affected.*
 - **Component A:** Description of changes.
 - **Component B:** Description of changes.
+
+### 4.3. High-Level Flow (Mermaid)
+<!-- Include only if you generated a diagram; delete entire 4.3 if not -->
 
 ## 5. Risks and Dependencies
 *You will list any identified risks and their potential mitigations. If none were mentioned, you will ask about potential risks.*
